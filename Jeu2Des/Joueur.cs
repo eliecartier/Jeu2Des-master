@@ -11,8 +11,8 @@ namespace Jeu2Des
     /// <remarks></remarks>class Joueur
     public class Joueur
     {
-     
-      private static int  _Compteur = 1 ; //Pour donner un nom par défaut au joueur
+        
+        private static int  _Compteur = 1 ; //Pour donner un nom par défaut au joueur
 
       //Idée : on pourrait ajouter ici une liste pour garder les résultats de tous les lancers du joueur
 
@@ -80,8 +80,12 @@ namespace Jeu2Des
 
             //TODO : dans cette version le résutat est affiché à la console
             //TODO : en attendant la mise e place du classement 
-            Console.WriteLine(this.ToString()); 
+            Console.WriteLine(this.ToString());
+
+
+            
             return _Score;
+
         }
 
         /// <summary>

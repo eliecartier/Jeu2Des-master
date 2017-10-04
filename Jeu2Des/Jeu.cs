@@ -15,7 +15,9 @@ namespace Jeu2Des
     /// </summary>   
      public class Jeu
     {
-       
+        
+        private Classement _HighScore;
+        
         private Joueur _Joueur;
 
         /// <summary>
@@ -40,6 +42,8 @@ namespace Jeu2Des
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
             _Des[1] = new De();
+            _HighScore = new Classement();
+            
             
         }
 
@@ -55,7 +59,12 @@ namespace Jeu2Des
 
             //On fait jouer le joueur en lui passant les 2 dés
             int resultat = _Joueur.Jouer(_Des);
+
            
+
+            _HighScore.AjouterAuHighScore(nom,resultat);
+            
+
         }
 
         /// <summary>
@@ -70,8 +79,21 @@ namespace Jeu2Des
 
             //Le joueur Joue et on récupère son score
             int resultat = _Joueur.Jouer(_Des);
+
+            
+
+            _HighScore.AjouterAuHighScore(Joueur.Nom,resultat);
+            
             
         }
-        
+
+        public void AfficheHighScore()
+        {
+            foreach (var scorejoueur in _HighScore.ToString())
+            {
+                Console.WriteLine(scorejoueur);
+            }
+        }
+
     }
 }
