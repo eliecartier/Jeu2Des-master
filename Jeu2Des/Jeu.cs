@@ -43,6 +43,7 @@ namespace Jeu2Des
             _Des[0] = new De();
             _Des[1] = new De();
             _HighScore = new Classement();
+            _HighScore.LoadHighScore();
             
             
         }
@@ -89,10 +90,12 @@ namespace Jeu2Des
 
         public void AfficheHighScore()
         {
-            foreach (var scorejoueur in _HighScore.ToString())
-            {
-                Console.WriteLine(scorejoueur);
-            }
+            _HighScore.TopN();
+        }
+
+        public void SaveClassement()
+        {
+            _HighScore.SaveHighscore();
         }
 
     }
