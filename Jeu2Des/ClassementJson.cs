@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 
 namespace Jeu2Des
 {
-    [DataContract]
+    
     class ClassementJson : Classement
     {
 

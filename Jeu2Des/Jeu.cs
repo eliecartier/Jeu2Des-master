@@ -23,11 +23,12 @@ namespace Jeu2Des
         /// <summary>
         /// Représente le joueur courant (celui qui joue une partie)
         /// </summary>
-        /// <returns>Le joueur de la partie ou null si aucune partie n'est démarrée</returns>        
-        public Joueur Joueur
-        {
-            get{return _Joueur;}       
-        }
+        /// <returns>Le joueur de la partie ou null si aucune partie n'est démarrée</returns>
+        
+        //public Joueur Joueur
+        //{
+        //    get{return _Joueur;}       
+        //}
     
         private De[] _Des = new De[2]; 
 
@@ -46,22 +47,19 @@ namespace Jeu2Des
             if (choixsave == 1)
             {
                 _HighScore = new ClassementBinaire();
-                _HighScore.Load();
+                
             }
             else
             {
                 _HighScore = new ClassementJson();
-                _HighScore.Load();
+                
             }
+            _HighScore.Load();
 
 
 
-            //_HighScore = new Classement();
-            //_HighScore.LoadHighScore();
-            //_HighScore.LoadHighScoreXml();
-            //_HighScore.LoadHighScoreJson();
-            
-            
+
+
         }
 
         /// <summary>
@@ -99,7 +97,7 @@ namespace Jeu2Des
 
             
 
-            _HighScore.AjouterAuHighScore(Joueur.Nom,resultat);
+            _HighScore.AjouterAuHighScore(_Joueur.Nom,resultat);
             
             
         }

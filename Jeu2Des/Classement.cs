@@ -13,10 +13,10 @@ namespace Jeu2Des
     
     public abstract class Classement  
     {
-        public Dictionary<string, int > HighScore;
+        protected Dictionary<string, int > HighScore;
         
          
-        public Classement()
+        protected Classement()
         {
            HighScore = new Dictionary<string, int>();
         }
@@ -25,8 +25,7 @@ namespace Jeu2Des
         {
             if (HighScore.ContainsKey(nom) && HighScore[nom]< score)
             {
-                //HighScore.Remove(nom);
-                //HighScore.Add(nom, score);
+                
                 HighScore[nom] = score;
             }
             else if (HighScore.ContainsKey(nom) && HighScore[nom] > score)
@@ -44,12 +43,7 @@ namespace Jeu2Des
             
             
                      
-        }
-
-        public override string ToString()
-        {
-            return base.ToString();
-        }
+        }        
 
         public void TopN()
         {

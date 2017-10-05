@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Jeu2Des
 {
-    [Serializable]
+    
     class ClassementBinaire : Classement
     {
 
