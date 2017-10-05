@@ -35,15 +35,31 @@ namespace Jeu2Des
         /// <summary>
         /// Crée un jeu de 2 Dés avec un classement
         /// </summary> 
-       public Jeu()
+       public Jeu(int choixsave)
         {
 
             //A la création du jeu : les 2 dés sont crées 
             //On aurait pu créer les 2 Des juste au moment de jouer  
             _Des[0] = new De();
             _Des[1] = new De();
-            _HighScore = new Classement();
-            _HighScore.LoadHighScore();
+
+            if (choixsave == 1)
+            {
+                _HighScore = new ClassementBinaire();
+                _HighScore.Load();
+            }
+            else
+            {
+                _HighScore = new ClassementJson();
+                _HighScore.Load();
+            }
+
+
+
+            //_HighScore = new Classement();
+            //_HighScore.LoadHighScore();
+            //_HighScore.LoadHighScoreXml();
+            //_HighScore.LoadHighScoreJson();
             
             
         }
@@ -95,7 +111,7 @@ namespace Jeu2Des
 
         public void SaveClassement()
         {
-            _HighScore.SaveHighscore();
+            _HighScore.Save();            
         }
 
     }

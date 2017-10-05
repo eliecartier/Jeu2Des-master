@@ -47,6 +47,7 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Core" />
+    <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="Microsoft.CSharp" />
@@ -55,11 +56,14 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Classement.cs" />
+    <Compile Include="ClassementBinaire.cs" />
+    <Compile Include="ClassementJson.cs" />
     <Compile Include="De.cs" />
     <Compile Include="DoublonException.cs" />
     <Compile Include="Jeu.cs" />
     <Compile Include="Joueur.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="SerializableDictionary.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Jeu2Des.snk" />

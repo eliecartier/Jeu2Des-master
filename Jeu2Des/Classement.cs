@@ -4,18 +4,21 @@ using System.IO;
 using System.Linq;
 using System.Runtime.Serialization.Formatters.Binary;
 using System.Text;
+using System.Xml.Serialization;
+using System.Runtime.Serialization;
+using System.Runtime.Serialization.Json;
 
 namespace Jeu2Des
 {
-    [Serializable]
-    public class Classement  
+    
+    public abstract class Classement  
     {
-        SortedDictionary<string, int > HighScore;
+        public Dictionary<string, int > HighScore;
         
          
         public Classement()
         {
-           HighScore = new SortedDictionary<string, int>();
+           HighScore = new Dictionary<string, int>();
         }
 
         public void AjouterAuHighScore(string nom ,int score)
@@ -59,32 +62,42 @@ namespace Jeu2Des
             }
         }
 
-        public void SaveHighscore()
-        {
 
-            using (Stream fichier = File.Create("sav.txt"))
-            {
-                BinaryFormatter serializer = new BinaryFormatter();
-                serializer.Serialize(fichier, HighScore);
-                fichier.Close();
-            }
-        }
+        public abstract void Save();
 
-        public void LoadHighScore()
-        {
-            if (File.Exists("sav.txt"))
-            {
-                using (Stream fichier = File.OpenRead("sav.txt"))
-                {
-                    BinaryFormatter serializer = new BinaryFormatter();
-                    Object obj = serializer.Deserialize(fichier);
-
-                    HighScore = (SortedDictionary<string, int>)obj;
-                    fichier.Close();
-                }
-            }
-        }
+        public abstract void Load();
 
 
+        
+
+        #region savexml qui marche pas encore
+        //public void SaveHighScoreXml()
+        //{
+        //    using (Stream fichier = File.Create("savxml.xml"))
+        //    {
+        //        XmlSerializer serializer = new XmlSerializer(HighScore.GetType());
+        //        serializer.Serialize(fichier, HighScore);
+        //        fichier.Close();
+        //    }
+        //}
+
+        //public void LoadHighScoreXml()
+        //{
+        //    if (File.Exists("savxml.xml"))
+        //    {
+        //        using (Stream fichier = File.OpenRead("savxml.xml"))
+        //        {
+        //            XmlSerializer serializer = new XmlSerializer(typeof(Classement));
+        //            Object obj = serializer.Deserialize(fichier);
+
+        //            HighScore = (SerializableDictionary<string, int>)obj;
+        //            fichier.Close();
+        //        }
+        //    }
+
+        //}
+        #endregion
+
+       
     }
 }
